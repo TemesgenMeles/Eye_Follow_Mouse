@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Follow The Cursor</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h2 class="title">Don't Be Happy others Pain</h2>
+    <div class="container">
+        <div class="emoji" style="--clr: #65ff7f;">
+            <div class="eyeball">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="mouse"></div>
+        </div>
+
+        <div class="emoji" style="--clr: #f1c638;">
+            <div class="eyeball">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="mouse"></div>
+        </div>
+
+    </div>
+    <h2>It might hurt you too</h2>
+
+    <script>
+        document.querySelector('.container').addEventListener('mousemove', eyeballs);
+        function eyeballs(){
+            var eye = document.querySelectorAll('.eye');
+            eye.forEach(function(eye){
+                let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+                let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+
+                let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                let rot = (radian * (180 / Math.PI) * -1) + 270;
+                eye.style.transform = "rotate("+ rot +"deg)"
+            })
+        }
+
+        document.querySelector('.emoji').addEventListener('click', sad);
+        function sad(){
+            var em = document.querySelectorAll('.emoji');
+            em.forEach(function(em){
+                em.style.setProperty('--displays', 'block');
+                em.style.setProperty('--happy_height', '70px');    
+                em.style.setProperty('--happy_height2', '67px');    
+                em.style.setProperty('--happy_border', '70px 70px 0 0');
+                em.style.setProperty('--happy_border2', '67px 67px 0 0');
+                em.style.setProperty('--happy_top', '3px');
+            })
+        }
+    </script>
+</body>
+</html>

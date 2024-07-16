@@ -1,0 +1,134 @@
+:root {
+    --displays: none;
+    --happy_height : 50px;
+    --happy_height2 : 47px;
+    --happy_border : 0 0 50px 50px;
+    --happy_border2 : 0 0 47px 47px;
+    --happy_top: 0;
+}
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Acron bold';
+    src: url(./fonts/Acorn_Bold.ttf);
+}
+
+body {
+    background-color: #26362d;
+    padding: 3rem 3rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 1rem;
+}
+
+h2 {
+    color: transparent;
+    font-size: 4rem;
+    text-transform: capitalize;
+    word-spacing: 0.25rem;
+    font-family: 'Acron bold';
+    background-image: repeating-conic-gradient(#65ff7f 0% 5%, #f1c638 5% 10%);
+    background-clip: text;
+}
+
+.container {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #29412c;
+}
+
+.emoji {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: var(--clr);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border: 2px solid black;
+}
+
+
+.emoji::before {
+    display: var(--displays);
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: linear-gradient(160deg, #dde4de 0% 20%, #b2d4ba 20% 30%, transparent 20% 100%);
+}
+
+.eyeball {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.eye {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.eye::before {
+    position: absolute;
+    content: '';
+    background-color: #26362d;
+    width: 40px;
+    height: 40px;
+    top: 30%;
+    left: 5px;
+    border-radius: 50%;
+}
+
+.mouse {
+    position: relative;
+    width: 150px;
+    height: var(--happy_height);
+    background-color: #26362d;
+    border-radius: var(--happy_border2);
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    top: var(--happy_top);
+    left: 3px;
+    width: 144px;
+    height: var(--happy_height2);
+    background-color: var(--clr);
+    border-radius: var(--happy_border2);
+}
+
+.emoji:hover .mouse {
+    height: 70px;
+    border-radius: 70px 70px 0 0;
+    transition: all 0.3s;
+}
+
+.emoji:hover .mouse::before {
+    top: 3px;
+    height: 67px;
+    border-radius: 67px 67px 0 0;
+}
